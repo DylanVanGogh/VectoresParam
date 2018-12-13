@@ -12,7 +12,11 @@ namespace VectoresParam
         static void Main(string[] args)
         {
             int[] x = new int[MAX];
+            string[] nombres = new string[MAX];
             leer(x);
+            imprimir(x);
+            ordenar(x);
+            Console.WriteLine("\nVector ordenado ");
             imprimir(x);
             if (buscar(x, 15) == true)
                 Console.WriteLine("\n15 Encontrado");
@@ -22,8 +26,31 @@ namespace VectoresParam
                 Console.WriteLine("\n10 Encontrado");
             else
                 Console.WriteLine("\n10 No existe");
+
+            //TRABAJANDO CON EL VECTOR DE CADENA DE CARACTERES
+            Console.WriteLine("\nINGRESE LOS NOMBRES");
+            leernombres(nombres);
+            imprimirnombres(nombres);
+            
             Console.ReadKey();
 
+        }
+
+        public static void ordenar (int[] x)
+        {
+            int aux = 0;
+            for(int i = 0; i < x.Length; i++)
+            {
+                for(int j = i + 1; j < x.Length; j++)
+                {
+                    if (x[i] > x[j])
+                    {
+                        aux = x[i];
+                        x[i] = x[j];
+                        x[j] = aux;
+                    }
+                }
+            }
         }
 
         public static void leer(int[] x)
@@ -36,6 +63,16 @@ namespace VectoresParam
            
         }
 
+        public static void leernombres(string[] x)
+        {
+            for (int i = 0; i < MAX; i++)
+            {
+                Console.WriteLine("\nIngrese el nombre {0}", i + 1);
+                x[i] = (Console.ReadLine());
+            }
+
+        }
+
         public static void imprimir(int[] x)
         {
             foreach(int num in x)
@@ -44,6 +81,13 @@ namespace VectoresParam
             }
         }
 
+        public static void imprimirnombres(string[] x)
+        {
+            foreach (string num in x)
+            {
+                Console.WriteLine("\nElemento {0}", num);
+            }
+        }
         public static bool buscar(int[] x, int y)
         {
             bool encontrado = false;
