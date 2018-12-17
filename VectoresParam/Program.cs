@@ -31,7 +31,9 @@ namespace VectoresParam
             Console.WriteLine("\nINGRESE LOS NOMBRES");
             leernombres(nombres);
             imprimirnombres(nombres);
-            
+            ordenarnombres(nombres);
+            Console.WriteLine("Vector ordenar nombres");
+            imprimirnombres(nombres);
             Console.ReadKey();
 
         }
@@ -44,6 +46,23 @@ namespace VectoresParam
                 for(int j = i + 1; j < x.Length; j++)
                 {
                     if (x[i] > x[j])
+                    {
+                        aux = x[i];
+                        x[i] = x[j];
+                        x[j] = aux;
+                    }
+                }
+            }
+        }
+
+        public static void ordenarnombres(string[] x)
+        {
+            string aux = "";
+            for (int i = 0; i < x.Length; i++)
+            {
+                for (int j = i; j < x.Length; j++)
+                {
+                    if (String.Compare(x[i], x[j], StringComparison.Ordinal) > 0)
                     {
                         aux = x[i];
                         x[i] = x[j];
